@@ -1,0 +1,6 @@
+<% short = ShortConverter::Encoder.call(@link.id) %>
+
+<div class="flex">
+    <p class="flex-1">Your shortened URL is:</p>
+    <%= link_to "#{hostname}/#{short}", link_path(short), class: "flex-1 text-gray-700 text-center p-3" %>
+</div>
