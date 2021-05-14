@@ -1,8 +1,8 @@
 module ShortConverter
   ##
-  # Base service class which provides an alphabet 
+  # Base service class which provides an alphabet
   # and a class method for checking its length.
-  class ConverterBase
+  class Base
     ALPHABET = (('a'..'z').to_a + ('A'..'Z').to_a + ('0'..'9').to_a).freeze
 
     def self.base
@@ -12,9 +12,9 @@ module ShortConverter
 
   ##
   # Service class for encoding numbers into strings.
-  class Encoder < ConverterBase
+  class Encoder < Base
     # Bijective function which takes an id
-    # (Integer) and returns its base64 equivalent (String)
+    # (Integer) and returns its base62 equivalent (String)
     def self.call(id)
       return ALPHABET.first if id.zero?
 
@@ -30,9 +30,9 @@ module ShortConverter
 
   ##
   # Service class for decoding strings into numbers.
-  class Decoder < ConverterBase
+  class Decoder < Base
     # Bijective function which takes
-    # a base64 shortcode (String) and returns its base10
+    # a base62 shortcode (String) and returns its base10
     # equivalent (Integer).
     def self.call(shortcode)
       i = 0

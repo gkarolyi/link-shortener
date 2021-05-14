@@ -58,12 +58,18 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+# enable TailwindCSS for styling
 gem "tailwindcss-rails", "~> 0.3.3"
 
 gem "simple_form-tailwind"
 
 gem "simple_form", "~> 5.1"
 
+# for correct validation messages in ajax forms
 gem "turbolinks_render", "~> 0.9.21"
 
+# meta tags for SEO
 gem "meta-tags", "~> 2.14"
+
+# used during the validation step for new links
+gem 'open-uri'

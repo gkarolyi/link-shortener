@@ -1,24 +1,47 @@
-# README
+# Simple URL shortener
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a URL shortening service written using `Ruby on Rails` as part of a technical challenge.
+This was a fun and interesting challenge to work on, and I will probably continue playing around
+with and improving on it as I keep learning.
 
-Things you may want to cover:
+## Demo
 
-* Ruby version
+This project is deployed live [here](https://gkarolyi-link-shortener.herokuapp.com/).
 
-* System dependencies
+## Running Tests
 
-* Configuration
+To run tests, run the following command
 
-* Database creation
+```bash
+  rake test test:system
+```
 
-* Database initialization
+## Run Locally
 
-* How to run the test suite
+Clone the project
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+  gh repo clone gkarolyi/link-shortener
+```
 
-* Deployment instructions
+Go to the project directory
 
-* ...
+```bash
+  cd link-shortener
+```
+
+Install dependencies
+
+```bash
+  bundle && yarn
+```
+
+Start the server
+
+```bash
+  rails server
+```
+
+In the development environment all TailwindCSS styles
+are included, which leads to enormous payloads -
+unused styles are purged in production.
