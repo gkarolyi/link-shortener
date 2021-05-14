@@ -1,0 +1,7 @@
+<% button_classes = "mt-6 inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-indigo-500 hover:bg-indigo-200 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+
+<% if @link.id %>
+    <%= link_to "Another one!", root_path, class: button_classes %>
+<% else %>
+    <%= button_tag "Shorten it!", type: 'submit', form: 'url-form', class: button_classes, data: { disable_with: "Shortening..." } %>
+<% end %>

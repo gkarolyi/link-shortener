@@ -1,21 +1,22 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>LinkShortener</title>
+    <%# <title>LinkShortener</title> %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= display_meta_tags site: "Welcome!" %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'inter-font', "data-turbo-track": "reload" %>
     <%= stylesheet_pack_tag "application", "data-turbo-track": "reload" %>
   </head>
 
   <body>
-    <div class="h-screen">
-      <div class="md:container md:mx-auto md:px-8 md:py-3">
-        <%= yield %>
-      </div>
+    <div class="bg-blue-500 font-sans">
+      <%= render partial: 'partials/welcome_header' %>
+      <%= yield %>
     </div>
   </body>
 </html>

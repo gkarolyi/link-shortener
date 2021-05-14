@@ -34,9 +34,9 @@ module ShortConverter
     # Bijective function which takes
     # a base64 shortcode (String) and returns its base10
     # equivalent (Integer).
-    def self.call(short)
+    def self.call(shortcode)
       i = 0
-      short.each_char { |char| i = i * base + ALPHABET.index(char) }
+      shortcode.each_char { |char| i = i * base + ALPHABET.index(char) }
       i
     end
   end

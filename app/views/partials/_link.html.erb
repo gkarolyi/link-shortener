@@ -1,0 +1,16 @@
+<% if @link.errors.any? %>
+
+    <% @link.errors.messages.each do |msg| %>
+        <p><%= msg %></p>
+    <% end %>
+
+<% else %>
+
+    <% shortcode = @link.shortcode %>
+
+    <div class="flex">
+        <p class="flex-1">Your shortened URL is:</p>
+        <%= link_to "#{hostname}/#{shortcode}", link_path(shortcode), class: "flex-1 text-gray-700 text-center p-3" %>
+    </div>
+
+<% end %>

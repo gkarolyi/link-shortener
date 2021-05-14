@@ -1,14 +1,11 @@
-<div class="new-search">
-    <div class="container bg-gray-200" data-controller="shortener">
-        <div class="new-url-form p-3">
-            <%= simple_form_for @link, remote: true, html: { data: { type: "html", action: "ajax:success->shortener#onSuccess" } } do |f| %>
-                <%= f.error_notification %>
-                <%= f.input :url, as: :string %>
-                <%= f.button :button, "Shorten!" %>
-            <% end %>
-        </div>
-        <div class="shortened-url" data-shortener-target="shortenedUrl">
+<% locals = @link.id ? { hostname: hostname } : {} %>
+<% set_meta_tags title: 'URL shortener',
+                 description: 'A simple URL shortener service' %>
 
-        </div>
+<div class="new-search" data-controller="shortener">
+    
+    <div class="url-form">
+        <%= render partial: 'partials/url_form', locals: locals %>
     </div>
+
 </div>

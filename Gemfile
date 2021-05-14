@@ -63,3 +63,7 @@ gem "tailwindcss-rails", "~> 0.3.3"
 gem "simple_form-tailwind"
 
 gem "simple_form", "~> 5.1"
+
+gem "turbolinks_render", "~> 0.9.21"
+
+gem "meta-tags", "~> 2.14"

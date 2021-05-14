@@ -1,0 +1,41 @@
+<!-- In order to purge all unused styles correctly in 
+production, all potentially necessary TailwindCSS classnames 
+have to be included in full. -->
+
+<% if @link.errors.any? %>
+    <% colours = "border-red-300 text-red-900 placeholder-red-300 focus:ring-red-500 focus:border-red-500" %>
+
+<% elsif @link.id %>
+    <% colours = "border-green-300 text-green-900 placeholder-green-300 focus:ring-green-500 focus:border-green-500" %>
+    <!-- display the shortened url -->
+    <% @link.url = "#{hostname}/#{@link.shortcode}" %>
+
+<% else %>
+    <% colours = "border-blue-300 text-gray-900 placeholder-blue-300 focus:ring-blue-500 focus:border-blue-500" %>
+
+<% end %>
+
+<div class="h-screen flex flex-col items-center justify-center">
+    <div class="md:container md:mx-auto w-11/12 p-3 md:w-8/12 md:p-10 lg:w-3/6 bg-indigo-200 rounded-lg border shadow-lg z-50">
+        <div class="new-url-form">
+            <div class="mt-1 relative rounded-md shadow-sm">
+                
+                <%= form_with model: @link, local: false, html: { id: "url-form" } do |f| %>
+                    <%= f.text_field :url, class: "block w-full pr-10 sm:text-sm rounded-md focus:outline-none #{colours}", placeholder: "http://example.com", data: { shortener_target: "formInput", action: "shortener#typing" } %>
+
+                    <%= render partial: 'partials/success_icon' if @link.id %>
+                    <%= render partial: "partials/error_icon" if @link.errors.any? %>
+                    
+                <% end %>
+            </div>
+
+                    <!-- Indented to indicate this is part of the form but outside the container -->
+                    <%= render partial: 'partials/success_message' if @link.id %>
+                    <%= render partial: "partials/error_message" if @link.errors.any? %>
+
+        </div>
+    </div>
+
+    <%= render partial: 'partials/button' %>
+                    
+</div>

@@ -1,0 +1,11 @@
+<div class="new-url-form p-3">
+    <%= simple_form_for @link, remote: true, html: { data: { type: "html", action: "ajax:success->shortener#onSuccess input->shortener#onInput" } } do |f| %>
+        <%= f.error_notification %>
+        <%= f.input :url, as: :string %>
+        <% if @link.id %>
+            <%= f.button :button, (link_to "Do another one!", root_path) %>
+        <% else %>
+            <%= f.button :button, "Shorten!", data: { disable_with: "Shortening..."} %>
+        <% end %>
+    <% end %>
+</div>

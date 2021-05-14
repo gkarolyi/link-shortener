@@ -1,10 +1,17 @@
 import { Controller } from "stimulus";
 
 export default class extends Controller {
-  static targets = ["shortenedUrl"];
+  static targets = ["formInput", "successMsg"];
 
-  onSuccess(event) {
-    let [data, status, xhr] = event.detail;
-    this.shortenedUrlTarget.innerHTML = xhr.response;
+  connect() {
+    this.formInputTarget.select();
+    if (this.hasSuccessMsgTarget) {
+      this.formInputTarget.disabled = true;
+      document.execCommand("copy");
+    }
+  }
+
+  typing(event) {
+    // TODO: on-the-fly hints for URL verification
   }
 }

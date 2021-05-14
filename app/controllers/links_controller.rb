@@ -7,18 +7,13 @@ class LinksController < ApplicationController
 
   def create
     @link = Link.new(link_params)
-    #@link.save ? (redirect_to root_path) : (render :new)
-    #@link.save #&& (redirect_to root_path)
-    if @link.save
-      render @link, locals: { hostname: request.host_with_port }
-    else
-      render :new
-    end
+    locals = @link.save ? current_hostname : {}
+    render :new, locals: locals
   end
 
   def show
-    id = ShortConverter::Decoder.call(params[:short])
-    @link = Link.find(id)
+    @link = Link.find_by_shortcode(params[:shortcode])
+    @link.log_visit!
     redirect_to @link.url, status: 301
   end
 
@@ -30,5 +25,9 @@ class LinksController < ApplicationController
 
   def handle_link_not_found
     render :not_found
+  end
+
+  def current_hostname
+    { hostname: request.host_with_port }
   end
 end
